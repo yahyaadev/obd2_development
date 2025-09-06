@@ -1,0 +1,14 @@
+{
+    // Use the PlatformIO Core that ships with the extension
+    // (avoids random system PIO installs breaking builds across machines)
+    "platformio-ide.useBuiltinPIOCore": true,
+    // Auto-close the serial monitor before upload so flashing doesn't fail
+    "platformio-ide.autoCloseSerialMonitor": true,
+    // Keep VS Code Explorer clean
+    "files.exclude": {
+        "**/.pio": true
+    },
+    // Make the Problems panel light up with PIO build errors/warnings
+    // (the tasks below already use $platformio, this keeps intent clear)
+    "problemMatcher.base": "$platformio"
+}
