@@ -1,0 +1,22 @@
+name: Firmware CI
+
+on:
+  push:
+    paths: [ "firmware/**", ".github/workflows/firmware-ci.yml" ]
+  pull_request:
+    paths: [ "firmware/**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install PlatformIO
+        run: pipx install platformio
+      - name: Build (nucleo_f446re)
+        working-directory: firmware
+        run: pio run -e nucleo_f446re

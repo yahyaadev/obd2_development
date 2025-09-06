@@ -1,26 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# 1) Ensure venv tooling (PEP 668 wants isolation)
-sudo apt update
-sudo apt install -y python3-venv
-
-# 2) Create/refresh repo-local venv
-if [ ! -d ".venv" ]; then
-  python3 -m venv .venv
-fi
+# Make venv
+python3 -m venv .venv
 . .venv/bin/activate
-
-# 3) Install Python deps pinned by requirements.txt
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r bridge/requirements.txt
 
-# 4) Serial permissions (udev rules + dialout) for PlatformIO boards
-# (Reload rules and re-plug board afterwards)
-curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules \
-| sudo tee /etc/udev/rules.d/99-platformio-udev.rules >/dev/null
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-sudo usermod -aG dialout "$USER" || true
+# PlatformIO udev rules (Linux)
+if [ -w /etc/udev/rules.d ]; then
+  sudo curl -fsSL \
+    https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules \
+    -o /etc/udev/rules.d/99-platformio-udev.rules
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
+fi
 
-echo "Bootstrap done. Log out/in (or reboot) to apply 'dialout' group. Then re-plug the NUCLEO."
+# Serial access group
+if id -nG "$USER" | grep -qw dialout; then
+  echo "User already in dialout"
+else
+  echo "Adding $USER to dialout (relog/reboot required)"
+  sudo usermod -aG dialout "$USER"
+fi
+
+echo "Bootstrap done. Replug the NUCLEO and use VS Code tasks."

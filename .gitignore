@@ -79,3 +79,10 @@ app/mobile/.gradle/
 app/mobile/android/local.properties
 app/mobile/ios/Pods/
 app/mobile/ios/.symlinks/
+
+
+.pio/
+.vscode/.cmake/
+.venv/
+__pycache__/
+logs/*.csv

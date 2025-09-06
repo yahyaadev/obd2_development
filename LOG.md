@@ -63,9 +63,9 @@
 **Log #:** 007
 **Goal:** Make UART output visible and stable on `/dev/ttyACM0 @ 115200` via ST-LINK VCP (Nucleo-F446RE).
 **Files:**
-  - `firmware/platformio.ini` (pin `monitor_speed = 115200`, optional `monitor_port = /- dev/ttyACM0`)
-  - `firmware/src/main.c` (explicit `MX_USART2_UART_Init()` on PA2/PA3 AF7; minimal UART loop)
-  - `firmware/src/stm32f4xx_it.c` (adds `SysTick_Handler()` → `HAL_IncTick()` so `HAL_Delay()` works)
+  `firmware/platformio.ini` (pin `monitor_speed = 115200`, optional `monitor_port = /dev/ttyACM0`)
+  `firmware/src/main.c` (explicit `MX_USART2_UART_Init()` on PA2/PA3 AF7; minimal UART loop)
+  `firmware/src/stm32f4xx_it.c` (adds `SysTick_Handler()` → `HAL_IncTick()` so `HAL_Delay()` works)
 **Actions:**
   Verified the exact port: `pio device list` → `/dev/ttyACM0 (ST-Link VCP)`.
   Opened monitor explicitly: `pio device monitor -p /dev/ttyACM0 --baud 115200`.
@@ -73,7 +73,24 @@
   Ensured HAL tick is alive by defining `SysTick_Handler()`; LED heartbeat confirms main loop runs.
 **Results:** Serial monitor now shows continuous output (`BOOT`, then repeated `hello`). Path from USART2 (PA2/PA3) → ST-LINK VCP is confirmed working at 115200 baud.
 **Evidence:** 
-  - Port list: `/dev/ttyACM0` present (ST-Link VCP).
-  - Monitor prints: `BOOT` then `hello` every ~200 ms.
+  Port list: `/dev/ttyACM0` present (ST-Link VCP).
+  Monitor prints: `BOOT` then `hello` every ~200 ms.
 **Next:** Restore the JSON loop (10 Hz). To avoid `%f` issues with newlib-nano, either (A) emit scaled ints (`speed_kph_x10`, `batt_v_x10`) or (B) enable float printf with `-u _printf_float`. Then run the Pi CSV logger + compute.
 
+**Date:** 2025-09-06
+**Log #:** 008
+**Goal:** Emit newline-terminated JSON at ~10 Hz from STM32 and view it on serial; capture to CSV on the Pi.
+**Files:**
+  `firmware/src/main.c` (restored JSON print loop using `printf("{...}\r\n")` with 100 ms delay)
+  `firmware/src/retarget.c` (`printf` → USART2 / ST-LINK VCP)
+  `firmware/platformio.ini` (either scaled-int output *or* enable float printf via `-Wl,--undefined,_printf_float`)
+  `bridge/serial_logger.py` (CSV logger; auto-detect `/dev/ttyACM*`)
+**Actions:**
+  Opened serial: `pio device monitor --baud 115200` and confirmed clean JSON lines (CRLF).
+  Activated venv and ran logger: `source .venv/bin/activate && python bridge/serial_logger.py --baud 115200 --outdir logs`.
+  Verified file creation and headers in `logs/telemetry_YYYYmmdd_HHMMSS.csv`.
+**Results:** JSON frames are visible on serial and recorded to CSV at ~10 Hz with stable timestamps and sequence numbers.
+**Evidence:**
+  Sample line:
+  ```json
+  {"seq":1,"tx_ms":1234,"rpm":1650,"speed_kph":42.1,"coolant_c":78,"batt_v":12.1}

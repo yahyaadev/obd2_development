@@ -6,67 +6,46 @@
             "type": "shell",
             "command": "pio run",
             "options": {
-                "cwd": "${workspaceFolder:firmware}"
+                "cwd": "${workspaceFolder}/firmware"
             },
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$platformio"
+            ]
         },
         {
             "label": "PIO: Upload (firmware)",
             "type": "shell",
             "command": "pio run -t upload",
             "options": {
-                "cwd": "${workspaceFolder:firmware}"
+                "cwd": "${workspaceFolder}/firmware"
             },
-            "problemMatcher": []
+            "problemMatcher": [
+                "$platformio"
+            ]
         },
         {
             "label": "PIO: Monitor (firmware)",
             "type": "shell",
             "command": "pio device monitor --baud 115200",
             "options": {
-                "cwd": "${workspaceFolder:firmware}"
-            },
-            "problemMatcher": []
+                "cwd": "${workspaceFolder}/firmware"
+            }
         },
         {
-            "label": "PIO: Clean (firmware)",
+            "label": "Bridge: Serial logger",
             "type": "shell",
-            "command": "pio run -t clean",
-            "options": {
-                "cwd": "${workspaceFolder:firmware}"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Pi: Logger (CSV)",
-            "type": "process",
-            "command": "${workspaceFolder}/.venv/bin/python",
-            "args": [
-                "bridge/serial_logger.py",
-                "--port",
-                "auto",
-                "--baud",
-                "115200",
-                "--out",
-                "logs/telemetry.csv",
-                "--print"
-            ],
+            "command": "${workspaceFolder}/.venv/bin/python bridge/serial_logger.py",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": []
-        },
-        {
-            "label": "Pi: Compute (rate/jitter/drops)",
-            "type": "process",
-            "command": "${workspaceFolder}/.venv/bin/python",
-            "args": [
-                "bridge/compute_demo.py"
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": []
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
         }
     ]
 }
