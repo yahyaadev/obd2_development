@@ -1,4 +1,6 @@
 #include "stm32f4xx_hal.h"
+#include <stdio.h>
+#include <string.h>
 
 // Optional: if you ever use HAL_Delay, SystemClock_Config should be set.
 // For a "do nothing" firmware, HAL_Init() is safe and enough.
