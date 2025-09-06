@@ -4,6 +4,21 @@ This repo builds a **bench‑only, read‑only OBD‑lite** MVP: an STM32 device
 
 ---
 
+## Clone this repository
+
+Via HTTPS:
+
+```bash
+cd ~
+git clone https://github.com/ka5j/obd2_development.git
+cd obd2_development
+
+Via SSH:
+
+cd ~
+git clone git@github.com:ka5j/obd2_development.git
+cd obd2_development
+
 ## 0) TL;DR (Quick Start)
 
 1. **Open the workspace** in VS Code: `File -> Open Workspace from File…` -> `obb2_development.code-workspace` (repo root).
