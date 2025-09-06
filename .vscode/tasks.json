@@ -25,6 +25,14 @@
             "options": {
                 "cwd": "${workspaceFolder:firmware}"
             }
+        },
+        {
+            "label": "PIO: Clean (firmware)",
+            "type": "shell",
+            "command": "pio run -t clean",
+            "options": {
+                "cwd": "${workspaceFolder:firmware}"
+            }
         }
     ]
 }
