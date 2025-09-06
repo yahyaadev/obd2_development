@@ -30,3 +30,12 @@
 - **Evidence:** Build SUCCESS; Upload OK.
 - **Outcome:** End-to-end Build -> Link -> Flash works from VS Code on the Pi.
 - **Next:** Add a tiny JSON emitter over USART2 at 5–10 Hz, plus a Pi-side reader to confirm the pipe.
+
+- **Date:** 2025-09-06
+- **Log #:** 004
+- **Goal:** Use repo root as single VS Code workspace; fix HAL IntelliSense; run PlatformIO from root.
+- **Files:**
+  - `obb2_development.code-workspace`
+  - `.vscode/tasks.json`
+- **Results:** HAL include OK in `firmware/src/main.c`; root tasks build & upload succeed; serial monitor opens (`/dev/ttyACM*` @ 115200) but **no output yet** (JSON pipe not implemented).
+- **Next:** Implement UART JSON emitter in firmware, then add Pi CSV logger at `bridge/serial_logger.py`.
