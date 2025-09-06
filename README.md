@@ -4,20 +4,23 @@ This repo builds a **bench‑only, read‑only OBD‑lite** MVP: an STM32 device
 
 ---
 
-## Clone this repository
-
-Via HTTPS:
+## Clone this repository HTTPS
 
 ```bash
 cd ~
 git clone https://github.com/ka5j/obd2_development.git
 cd obd2_development
 
-Via SSH:
+---
 
+## Clone this repository SSH
+
+```bash
 cd ~
 git clone git@github.com:ka5j/obd2_development.git
 cd obd2_development
+
+---
 
 ## 0) TL;DR (Quick Start)
 
