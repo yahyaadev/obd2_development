@@ -50,3 +50,11 @@
 **Results:** Teammates can clone, open the workspace, build, upload, and open the serial monitor from the repo root. Docs clearly state that JSON output is not implemented yet.
 **Evidence:** `Terminal -> Run Task…` -> PIO tasks succeed (Build/Upload/Monitor @ 115200). `pio device list` shows `/dev/ttyACM*`. HAL IntelliSense OK in `firmware/src/main.c`.
 **Next:** Implement UART JSON emitter in `firmware/src/main.c` (newline-terminated JSON @ 115200, ~10 Hz) and add Pi CSV logger at `bridge/serial_logger.py`. Then iterate toward BLE bridge and simulated CAN bench.
+
+
+**Date:** 2025-09-06
+**Log #:** 006
+**Goal:** Get continuous UART output on /dev/ttyACM0 @115200 via ST-LINK VCP.
+**Actions:** Pinned monitor_speed=115200; verified Nucleo VCP bridges (SB13/SB14 ON; SB61/SB62/SB63 OFF) per UM1724; ran minimal LED+UART test; restored JSON loop without %f (or enabled -u _printf_float).
+**Results:** Serial monitor shows newline-terminated output (~10 Hz) reliably.
+**Next:** Start Pi logger (CSV) and compute (rate/jitter/drops).
