@@ -22,7 +22,6 @@
 - **Evidence:** Build completes (no Error 139); Upload via ST-LINK succeeds.
 - **Next:** Provide minimal `main()` so PlatformIO can link and flash.
 
-
 - **Date:** 2025-09-06
 - **Log #:** 003
 - **Goal:** Provide minimal `main()` so PlatformIO can link and flash.
