@@ -1,1 +1,81 @@
-.vscode/settings.json
+# ===============================
+# obd2_development /.gitignore
+# ===============================
+
+# --- PlatformIO (builds + cached deps) ---
+.pio/
+.piolibdeps/   # legacy path on older PIO versions
+
+# --- Python (venv, bytecode, builds, coverage, caches) ---
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+.eggs/
+dist/
+build/
+.coverage
+.cache/
+.pytest_cache/
+.mypy_cache/
+.pytype/
+.dmypy.json
+.pyre/
+.ipynb_checkpoints/
+
+# --- Logs & data captures (keep the folder with a placeholder) ---
+logs/**
+!logs/.gitkeep
+
+# --- VS Code (ignore everything except shared project files) ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- C/C++ generic artifacts (outside of .pio) ---
+*.o
+*.obj
+*.elf
+*.map
+*.lst
+*.bin
+*.hex
+*.d
+*.su
+
+# --- STM32 / CubeMX & Eclipse artifacts (if added later)
+# Keep .ioc, .project, .cproject tracked if you create a CubeIDE subproject.
+# Ignore transient IDE/build output:
+**/.settings/
+**/Debug/
+**/Release/
+**/*.launch
+*.mxproject
+*.mxproject.*
+
+# --- Flutter mobile subproject (if/when used) ---
+app/mobile/.dart_tool/
+app/mobile/.packages
+app/mobile/.flutter-plugins
+app/mobile/.flutter-plugins-dependencies
+app/mobile/.metadata
+app/mobile/build/
+app/mobile/.gradle/
+app/mobile/android/local.properties
+app/mobile/ios/Pods/
+app/mobile/ios/.symlinks/
