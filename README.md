@@ -1,4 +1,4 @@
-# OBD‑Lite (Bench‑Only) — Raspberry Pi + STM32 (Team Setup & Dev Guide)
+# OBD‑Lite (Bench‑Only) | Raspberry Pi + STM32 (Team Setup & Dev Guide)
 
 This repo builds a **bench‑only, read‑only OBD‑lite** MVP: an STM32 device emits telemetry as JSON; a Raspberry Pi reads it and (later) forwards it to a phone app over **BLE**. Eventually, the JSON values will come from **simulated CAN** on a two‑node bench bus. The goal is to keep everything **simple, reproducible, and Pi‑first**.
 
@@ -6,16 +6,14 @@ This repo builds a **bench‑only, read‑only OBD‑lite** MVP: an STM32 device
 
 ## 0) TL;DR (Quick Start)
 
-1. **Open the workspace** in VS Code: `File → Open Workspace from File…` → `obb2_development.code-workspace` (repo root).
+1. **Open the workspace** in VS Code: `File -> Open Workspace from File…` -> `obb2_development.code-workspace` (repo root).
 2. Install **PlatformIO IDE** and **C/C++** extensions if prompted.
 3. Plug the **NUCLEO‑F446RE** by USB (ST‑LINK onboard).
-4. **Build** -> **Upload** -> **Monitor** via `Terminal → Run Task…`:
+4. **Build** -> **Upload** -> **Monitor** via `Terminal -> Run Task...`:
    - **PIO: Build (firmware)**
    - **PIO: Upload (firmware)**
    - **PIO: Monitor (firmware)** (115200 baud)
 5. If serial permission errors: install udev rules (see *USB access* below), add user to `dialout`, replug board.
-
-> Current status: UART → JSON stream is the first milestone. If it’s not implemented yet, see *Enable the JSON stream*.
 
 ---
 
@@ -89,9 +87,9 @@ ls /dev/ttyACM*
 
 From VS Code (this repo’s window):
 
-- **Build:** `Terminal → Run Build Task…` → **PIO: Build (firmware)**
-- **Upload:** `Terminal → Run Task…` → **PIO: Upload (firmware)**
-- **Monitor:** `Terminal → Run Task…` → **PIO: Monitor (firmware)` (115200 baud)
+- **Build:** `Terminal -> Run Build Task…` -> **PIO: Build (firmware)**
+- **Upload:** `Terminal -> Run Task…` -> **PIO: Upload (firmware)**
+- **Monitor:** `Terminal -> Run Task…` -> **PIO: Monitor (firmware)` (115200 baud)
 
 CLI alternative:
 ```bash
@@ -108,7 +106,7 @@ Artifacts:
 
 ## 6) Enable the JSON stream (first milestone)
 
-**Goal:** MCU prints **one JSON line every ~100 ms** on USART2 (PA2/PA3 → ST‑LINK VCP @ 115200). Example payload:
+**Goal:** MCU prints **one JSON line every ~100 ms** on USART2 (PA2/PA3 -> ST‑LINK VCP @ 115200). Example payload:
 
 ```json
 {"seq":123,"tx_ms":4567,"rpm":1650,"speed_kph":42.1,"coolant_c":78,"batt_v":12.1}
@@ -143,7 +141,7 @@ platform_packages = platformio/toolchain-gccarmnoneeabi@=1.100301.220327
 
 ## 8) Roadmap (bench‑only MVP)
 
-1) **UART JSON → Pi CSV** logger (latency, packet loss)
+1) **UART JSON -> Pi CSV** logger (latency, packet loss)
 2) **Pi BLE bridge** (BlueZ GATT server; fixed service/characteristics; 5–10 Hz notify)
 3) **Trip logic** (start/stop thresholds) + CSV export parity
 4) **Alerts** (unplug/tow) — event JSON
@@ -155,10 +153,10 @@ Acceptance targets (later): median latency < 200 ms; packet loss < 1%; trip star
 
 ## 9) Troubleshooting (fast)
 
-- **No device/permission** → install udev rules, add `dialout`, replug; check `pio device list`.
-- **HAL include squiggles** → open the workspace file, then `PlatformIO: Rebuild IntelliSense Index` in VS Code.
-- **Serial shows nothing** → confirm the port (`ls /dev/ttyACM*`), correct baud (115200), and that `main.c` prints newline‑terminated JSON.
-- **Build toolchain errors on Pi** → pin `platform_packages` (see *PlatformIO notes*).
+- **No device/permission** -> install udev rules, add `dialout`, replug; check `pio device list`.
+- **HAL include squiggles** -> open the workspace file, then `PlatformIO: Rebuild IntelliSense Index` in VS Code.
+- **Serial shows nothing** -> confirm the port (`ls /dev/ttyACM*`), correct baud (115200), and that `main.c` prints newline‑terminated JSON.
+- **Build toolchain errors on Pi** -> pin `platform_packages` (see *PlatformIO notes*).
 
 ---
 
