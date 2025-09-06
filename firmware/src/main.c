@@ -34,7 +34,7 @@ static void MX_USART2_UART_Init(void)
     HAL_UART_Init(&huart2);
 }
 
-/* ===== Minimal clock (HSI 16 MHz is fine for UART) ===== */
+/* ==== Minimal clock (HSI 16 MHz is fine for UART) ==== */
 void SystemClock_Config(void) { /* keep default HSI */ }
 void Error_Handler(void)
 {
