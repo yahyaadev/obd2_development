@@ -1,13 +1,24 @@
 {
     "folders": [
         {
-            "path": "."
+            "path": "firmware"
         },
         {
-            "path": "firmware"
+            "path": "."
         }
     ],
+    "extensions": {
+        "recommendations": [
+            "platformio.platformio-ide",
+            "ms-vscode.cpptools",
+            "marus25.cortex-debug"
+        ]
+    },
     "settings": {
-        "C_Cpp.default.configurationProvider": "platformio.platformio-ide"
+        "platformio-ide.useBuiltinPIOCore": true,
+        "platformio-ide.autoCloseSerialMonitor": true,
+        "files.exclude": {
+            "**/.pio": true
+        }
     }
 }

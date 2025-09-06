@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "platformio.platformio-ide", // PlatformIO for build/upload/monitor
+        "ms-vscode.cpptools", // C/C++ IntelliSense
+        "marus25.cortex-debug" // ARM Cortex-M debugger (ST-LINK, etc.)
+    ]
+}
