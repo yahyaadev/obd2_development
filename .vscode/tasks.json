@@ -16,7 +16,8 @@
             "command": "pio run -t upload",
             "options": {
                 "cwd": "${workspaceFolder:firmware}"
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "PIO: Monitor (firmware)",
@@ -24,7 +25,8 @@
             "command": "pio device monitor --baud 115200",
             "options": {
                 "cwd": "${workspaceFolder:firmware}"
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "PIO: Clean (firmware)",
@@ -32,7 +34,8 @@
             "command": "pio run -t clean",
             "options": {
                 "cwd": "${workspaceFolder:firmware}"
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
