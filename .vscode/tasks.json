@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "PIO: Build (firmware)",
+            "type": "shell",
+            "command": "pio run",
+            "options": {
+                "cwd": "${workspaceFolder:firmware}"
+            },
+            "group": "build"
+        },
+        {
+            "label": "PIO: Upload (firmware)",
+            "type": "shell",
+            "command": "pio run -t upload",
+            "options": {
+                "cwd": "${workspaceFolder:firmware}"
+            }
+        },
+        {
+            "label": "PIO: Monitor (firmware)",
+            "type": "shell",
+            "command": "pio device monitor --baud 115200",
+            "options": {
+                "cwd": "${workspaceFolder:firmware}"
+            }
+        }
+    ]
+}

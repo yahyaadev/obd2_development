@@ -2,7 +2,6 @@
 
 - **Date:** 2025-09-05
 - **Log #:** 001
-- **Time Spent:** ~10-15 min
 - **Topics Covered:** Created project scaffold; verified Nucleo is visible (`st-info --probe`); confirmed `/dev/ttyACM*` appears
 - **Evidence:**
     - `st-info --probe` -> 
@@ -14,7 +13,14 @@
                 chipid:     0x0421
                 descr:      F446
     - `ls /dev/ttyACM*` -> /dev/ttyACM0
-- **Next Steps:** Add the tiniest firmware that prints one JSON line at 5-10 Hz over USART2, and a simple pi reader to confirm
+- **Next:** Add the tiniest firmware that prints one JSON line at 5-10 Hz over USART2, and a simple pi reader to confirm
+
+- **Date:** 2025-09-06
+- **Log #:** 002
+- **Goal:** Fix PlatformIO build segfault on Pi (ARM64).
+- **Change:** Pinned toolchain in `firmware/platformio.ini` to `platformio/toolchain-gccarmnoneeabi@=1.100301.220327` (GCC 10.3.1).
+- **Evidence:** Build completes (no Error 139); Upload via ST-LINK succeeds.
+- **Next:** Provide minimal `main()` so PlatformIO can link and flash.
 
 
 - **Date:** 2025-09-06
