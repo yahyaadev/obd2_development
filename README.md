@@ -10,6 +10,7 @@ This repo builds a **bench‑only, read‑only OBD‑lite** MVP: an STM32 device
 cd ~
 git clone https://github.com/ka5j/obd2_development.git
 cd obd2_development
+```
 
 ---
 
@@ -19,6 +20,7 @@ cd obd2_development
 cd ~
 git clone git@github.com:ka5j/obd2_development.git
 cd obd2_development
+```
 
 ---
 
@@ -107,7 +109,7 @@ From VS Code (this repo’s window):
 
 - **Build:** `Terminal -> Run Build Task…` -> **PIO: Build (firmware)**
 - **Upload:** `Terminal -> Run Task…` -> **PIO: Upload (firmware)**
-- **Monitor:** `Terminal -> Run Task…` -> **PIO: Monitor (firmware)` (115200 baud)
+- **Monitor:** `Terminal -> Run Task…` -> **PIO: Monitor (firmware)** (115200 baud)
 
 CLI alternative:
 ```bash
